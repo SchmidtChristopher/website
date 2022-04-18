@@ -43,12 +43,19 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="'alert alert-{{ message.tags }}"> 
+                        {{ message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
           </div>
           <div class="col-md-4">
             <div class="content-section">
               <h3>Sidebar</h3>
-              <p class='text-muted'>Text
+              <p class='text-muted'>{% lorem 2 w random %}
                 <ul class="list-group">
                   <li class="list-group-item list-group-item-light">Latest Posts</li>
                   <li class="list-group-item list-group-item-light">Announcements</li>
